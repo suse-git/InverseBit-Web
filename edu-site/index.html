@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edu.inversebits.ai - AUTOSAR & Embedded Systems Training</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1d3a 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #00d4ff;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        .nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #00d4ff;
+        }
+
+        .hero {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #00d4ff;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+        }
+
+        .course-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, rgba(26, 29, 58, 0.9) 0%, rgba(15, 18, 40, 0.9) 100%);
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 2.5rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            padding: 2px;
+            background: linear-gradient(135deg, #00d4ff, #8a2be2);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .course-card:hover::before {
+            opacity: 1;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .level-1 {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #000;
+        }
+
+        .level-2 {
+            background: linear-gradient(135deg, #8a2be2, #ff1493);
+            color: #fff;
+        }
+
+        .course-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .course-description {
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .module-section {
+            margin-top: 2rem;
+        }
+
+        .module-section h4 {
+            color: #00d4ff;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .module-section h4::before {
+            content: '▶';
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .module-list {
+            list-style: none;
+            margin-left: 1.5rem;
+        }
+
+        .module-list li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d0d0d0;
+            transition: all 0.3s;
+        }
+
+        .module-list li:hover {
+            color: #00d4ff;
+            padding-left: 0.5rem;
+        }
+
+        .module-list li::before {
+            content: '✓';
+            color: #00d4ff;
+            font-weight: bold;
+            margin-right: 0.8rem;
+        }
+
+        .course-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .highlight {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .highlight:hover {
+            background: rgba(0, 212, 255, 0.15);
+            transform: scale(1.05);
+        }
+
+        .highlight-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-text {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #000;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 2rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(26, 29, 58, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #00d4ff;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: rgba(26, 29, 58, 0.9);
+            transform: translateX(10px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-section {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%);
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            border-radius: 20px;
+        }
+
+        .demo-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        footer {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid #00d4ff;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .course-levels {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="https://edu.inversebits.ai" class="logo">edu<span>.inversebits.ai</span></a>
+            <nav class="nav">
+                <a href="#courses">Courses</a>
+                <a href="#features">Features</a>
+                <a href="#demos">Live Demos</a>
+                <a href="https://inversebits.ai">Main Site</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Master Embedded Systems & AUTOSAR</h1>
+        <p>Comprehensive hands-on training in C/C++, CAN, Ethernet protocols with real hardware demonstrations and live project implementations</p>
+        <a href="#courses" class="cta-button">Explore Courses</a>
+    </section>
+
+    <div class="container" id="courses">
+        <h2 class="section-title">Learning Paths</h2>
+        
+        <div class="course-levels">
+            <!-- Level 1 Course -->
+            <div class="course-card">
+                <span class="level-badge level-1">LEVEL 1 - FOUNDATION</span>
+                <h3>Embedded Systems Fundamentals</h3>
+                <p class="course-description">Perfect for beginners entering automotive embedded systems. Build a strong foundation in C/C++ programming and automotive communication protocols.</p>
+                
+                <div class="module-section">
+                    <h4>C/C++ for Embedded Systems</h4>
+                    <ul class="module-list">
+                        <li>C Programming Overview - Data types, operators, control structures</li>
+                        <li>Memory Management - Stack vs Heap, pointers and references</li>
+                        <li>C++ Essentials - Classes, objects, inheritance basics</li>
+                        <li>Embedded C Practices - Bit manipulation, volatile, register access</li>
+                        <li>Real-time Constraints - Timing considerations in embedded systems</li>
+                    </ul>
+                </div>
+
+                <div class="module-section">
+                    <h4>Automotive CAN Basics</h4>
+                    <ul class="module-list">
+                        <li>CAN Protocol Introduction - Frames, arbitration, error handling</li>
+                        <li>CAN Physical Layer - High/Low, termination, bus topology</li>
+                        <li>Message Structure - Standard vs Extended IDs, DLC, data bytes</li>
+                        <li>CAN Database (DBC) - Signal definition and extraction</li>
+                        <li>Hardware Demo - CAN bus communication with real ECUs</li>
+                    </ul>
+                </div>
+
+                <div class="module-section">
+                    <h4>Automotive Ethernet Introduction</h4>
+                    <ul class="module-list">
+                        <li>Why Ethernet in Automotive - Bandwidth, scalability needs</li>
+                        <li>Ethernet Basics - OSI model, TCP/IP fundamentals</li>
+                        <li>Automotive Ethernet Standards - 100BASE-T1, 1000BASE-T1</li>
+                        <li>SOME/IP Overview - Service-oriented communication</li>
+                        <li>
