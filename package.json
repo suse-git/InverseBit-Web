@@ -1,0 +1,14 @@
+{
+  "name": "edu-inversebits-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site for edu.inversebits.ai",
+  "scripts": {
+    "predeploy": "npm run build-noop",
+    "deploy": "gh-pages -d .",
+    "build-noop": "echo 'no build needed'"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}
