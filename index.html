@@ -16,39 +16,40 @@
         }
 
         :root {
-            --primary: #1a365d;
-            --primary-light: #2c5282;
-            --accent: #3182ce;
-            --secondary: #e53e3e;
-            --dark: #1a202c;
-            --light: #f7fafc;
-            --gray: #4a5568;
+            --primary: #00d4ff; /* cyan */
+            --primary-light: #0099cc;
+            --accent: #8a2be2; /* violet accent */
+            --secondary: #ff1493;
+            --dark: #0a0e27; /* page background dark */
+            --light: rgba(255,255,255,0.03);
+            --gray: #b0b0b0;
             --white: #ffffff;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient: linear-gradient(135deg, #00d4ff 0%, #8a2be2 100%);
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--white);
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1d3a 100%);
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 48px; /* increased horizontal padding so logo isn't clipped */
         }
 
         /* Header */
         header {
-            background: var(--white);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            background: rgba(10,14,39,0.95);
+            border-bottom: 2px solid var(--primary);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             transition: all 0.3s ease;
+            backdrop-filter: blur(6px);
         }
 
         nav {
@@ -554,22 +555,12 @@
 
         /* Hero Section */
         .hero {
-            background: var(--gradient);
-            padding: 120px 0 80px;
+            background: linear-gradient(135deg, rgba(0,212,255,0.06) 0%, rgba(138,43,226,0.06) 100%);
+            padding: 5rem 0 4rem;
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.05"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            animation: float 20s ease-in-out infinite;
+            border-bottom: 1px solid rgba(0,212,255,0.12);
         }
 
         @keyframes float {
@@ -584,19 +575,19 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             color: var(--white);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(0,212,255,0.25);
             animation: slideUp 1s ease-out;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 1.75rem;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             animation: slideUp 1s ease-out 0.2s both;
@@ -614,30 +605,30 @@
         }
 
         .cta-button {
-            background: var(--secondary);
-            color: var(--white);
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #000;
             padding: 15px 35px;
             border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: 700;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(229, 62, 62, 0.3);
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 30px rgba(0,212,255,0.12);
             animation: slideUp 1s ease-out 0.4s both;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(229, 62, 62, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,212,255,0.18);
         }
 
         /* Services Section */
         .services {
             padding: 80px 0;
-            background: var(--light);
+            background: transparent;
         }
 
         .section-title {
@@ -839,10 +830,11 @@
 
         /* Footer */
         footer {
-            background: var(--primary);
+            background: rgba(10,14,39,0.95);
             color: var(--white);
             padding: 3rem 0 2rem;
             text-align: center;
+            border-top: 2px solid rgba(0,212,255,0.06);
         }
 
         .footer-content {
@@ -859,13 +851,30 @@
 
         .footer-section p,
         .footer-section a {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.95);
             text-decoration: none;
             line-height: 1.6;
         }
 
         .footer-section a:hover {
             color: var(--white);
+        }
+
+        /* Footer bottom specific styles to ensure high contrast links */
+        .footer-bottom p {
+            color: rgba(255,255,255,0.95);
+            margin: 0;
+        }
+
+        .footer-bottom a {
+            color: #63b3ed; /* light blue */
+            text-decoration: none;
+            margin: 0 0.35rem;
+        }
+
+        .footer-bottom a:hover {
+            color: #00d4ff; /* brighter blue on hover */
+            text-decoration: underline;
         }
 
         .footer-bottom {
@@ -908,6 +917,10 @@
             .logo-icon {
                 width: 40px;
                 height: 40px;
+            }
+
+            .container {
+                padding: 0 16px; /* smaller padding on mobile */
             }
 
             .hex-network {
@@ -998,6 +1011,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="https://edu.inversebits.ai" target="_blank" rel="noopener noreferrer">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu">
@@ -1157,7 +1171,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 InverseBits. All rights reserved.</p>
+                <p>&copy; 2025 InverseBits. All rights reserved. | <a href="https://inversebits.ai" target="_blank" rel="noopener noreferrer">inversebits.ai</a> | <a href="https://edu.inversebits.ai" target="_blank" rel="noopener noreferrer">edu.inversebits.ai</a></p>
             </div>
         </div>
     </footer>
